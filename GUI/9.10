@@ -1,0 +1,35 @@
+import tkinter
+import tkinter.messagebox
+
+def main():
+    flag = True   #标记
+    #修改标签上的文字
+    def changeLabelText():
+        nonlocal flag
+        flag = not flag   #无限切换按钮
+        color,msg = ('red','hello world')\
+            if flag else ('blue','Goodbye,world')
+        label.config(text = msg , fg = color)     #标签控件 fg文字颜色
+    #确认退出
+    def confirmToQuit():
+        if tkinter.messagebox.askokcancel('Are You Sure To Quit?'):
+            top.quit()
+
+    top = tkinter.Tk()
+    top.geometry('300x300')
+    top.title('LITTLE GAME')
+    # 创建标签对象并添加到顶层窗口
+    label = tkinter.Label(top,text = 'hello world',fg = 'red',font = 'Arial -32')
+    label.pack(expand=1)
+    # 创建一个装按钮的容器
+    panel = tkinter.Frame(top)
+    # 创建按钮对象 指定添加到哪个容器中 通过command参数绑定事件回调函数
+    button1 = tkinter.Button(panel,text = 'Change it',command = changeLabelText)
+    button1.pack(side = 'right')
+    button2 = tkinter.Button(panel,text = 'Exit Game',command = confirmToQuit)
+    button2.pack(side = 'left')
+    panel.pack()
+    tkinter.mainloop()
+
+if __name__ == '__main__':
+    main()
