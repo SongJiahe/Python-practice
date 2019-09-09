@@ -1,0 +1,95 @@
+"""
+1.构造一张牌
+2.构造牌堆（4付牌，打乱顺序，抽一张去掉一张）
+3.定义庄
+4.定义闲
+5.定义手牌
+6.发牌：随机抽取一张牌
+7.计分
+8.要牌与否：闲选择是否要牌，庄是否强制要牌或无法要牌
+9.胜负判断：爆牌直接为负，如果没有爆牌则通过分数判断胜负
+10.游戏流程
+"""
+
+import random
+
+class Card():   #构造一张牌的规则
+
+    def __init__(self,suite,face):
+        self._suite = suite
+        self._face = face
+
+    @property
+    def suite(self):
+        return self._suite
+
+    @property
+    def face(self):
+        return self._face
+
+    def __str__(self):
+        if self._face == 1:   #先给A赋值11，如果爆牌再切换为1
+            face_str = 11
+        elif self._face == 11 or 12 or 13 :   #J\Q\K都为10
+            face_str = 10
+        else:
+            face_str = str(self._face)
+        return face_str
+    def __repr__(self):
+        return self.__str__()
+
+class Poker():   #牌库
+
+    def __init__(self):
+        self._cards = []
+        for i in range(4):   #四副牌
+            for suite in "":
+                for face in range(1, 14):
+                    self._cards.append("{}{}".format(suite, face))
+        self._current = 0
+        self._cards = random.shuffle(self._cards)   #洗牌，乱序
+
+    @property
+    def cards(self):
+        return self._cards
+
+    @property   #取一张牌并计数的方法
+    def next(self):
+
+        card = self._cards[self._current]
+        self._current += 1
+        return card
+
+class Player(object):   #庄闲
+
+    def __init__(self, name):
+        self._name = name
+        self._cards_on_hand = []
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def cards_on_hand(self):
+        return self._cards_on_hand
+
+    def get(self, card):
+        """摸牌"""
+        self._cards_on_hand.append(card)   #把切片得到的牌放入玩家手牌，不用pop是为了清晰直观
+
+
+"""未完待续"""
+
+
+
+
+
+def main():
+    p = Poker()
+    players = Player("songsheng")
+    print(players.get(p.next))
+
+
+if __name__ == '__main__':
+    main()
