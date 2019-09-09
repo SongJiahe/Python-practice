@@ -1,3 +1,11 @@
+基本上使用tkinter来开发GUI应用需要以下5个步骤：
+
+导入tkinter模块中我们需要的东西。
+创建一个顶层窗口对象并用它来承载整个GUI应用。
+在顶层窗口对象上添加GUI组件。
+通过代码将这些GUI组件的功能组织起来。
+进入主事件循环(main loop)。
+
 import tkinter
 import tkinter.messagebox
 
