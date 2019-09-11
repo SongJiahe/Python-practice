@@ -1,0 +1,142 @@
+'''except语句不是必须的，finally语句也不是必须的，但是二者必须要有一个，否则就没有try的意义了。
+except语句可以有多个，Python会按except语句的顺序依次匹配你指定的异常，如果异常已经处理就不会再进入后面的except语句。
+except语句可以以元组形式同时指定多个异常，参见实例代码。
+except语句后面如果不指定异常类型，则默认捕获所有异常，你可以通过logging或者sys模块获取当前异常。
+如果要捕获异常后要重复抛出，请使用raise，后面不要带任何参数或信息。
+不建议捕获并抛出同一个异常，请考虑重构你的代码。
+不建议在不清楚逻辑的情况下捕获所有异常，有可能你隐藏了很严重的问题。
+尽量使用内置的异常处理语句来替换try/except语句，比如with语句，getattr()方法。
+
+最佳实践不限于编程语言，只是一些规则和填坑后的收获。
+
+只处理你知道的异常，避免捕获所有异常然后吞掉它们。
+抛出的异常应该说明原因，有时候你知道异常类型也猜不出所以然。
+避免在catch语句块中干一些没意义的事情，捕获异常也是需要成本的。
+不要使用异常来控制流程，那样你的程序会无比难懂和难维护。
+如果有需要，切记使用finally来释放资源。
+如果有需要，请不要忘记在处理异常后做清理工作或者回滚操作。
+'''
+def main():
+    f = open('hhaah.txt','r',encoding='utf-8')
+    print(f.read())
+    f.close()
+
+if __name__ == '__main__':
+    main()
+
+def main():
+    f = None
+    try:
+        f = open('hahah.txt','r',encoding='utf-8')
+        print(f.read())
+    except FileNotFoundError:
+        print('无法打开指定文件')
+    except LookupError:
+        print('未知编码')
+    except UnicodeDecodeError:
+        print('读取文件时解码错误')
+    finally:
+        if f:
+            f.close()
+
+if __name__ == '__main__':
+    main()
+
+
+#在Python中，我们可以将那些在运行时可能会出现状况的代码放在try代码块中，在try代码块的后面可以跟上一个或多个except来捕获可能出现的异常状况。例如在上面读取文件的过程中，文件找不到会引发FileNotFoundError，指定了未知的编码会引发LookupError，而如果读取文件时无法按指定方式解码会引发UnicodeDecodeError，我们在try后面跟上了三个except分别处理这三种不同的异常状况。最后我们使用finally代码块来关闭打开的文件，释放掉程序中获取的外部资源，由于finally块的代码不论程序正常还是异常都会执行到（甚至是调用了sys模块的exit函数退出Python环境，finally块都会被执行，因为exit函数实质上是引发了SystemExit异常），因此我们通常把finally块称为“总是执行代码块”，它最适合用来做释放外部资源的操作。如果不愿意在finally代码块中关闭文件对象释放资源，也可以使用上下文语法，通过with关键字指定文件对象的上下文环境并在离开上下文环境时自动释放文件资源，代码如下所示。
+
+
+def main():
+    try:
+        with open('hahaha.txt','r',encoding='utf-8') as f:
+            print(f.read())
+    except FileNotFoundError:
+        print('无法打开指定的文件!')
+    except LookupError:
+        print('指定了未知的编码!')
+    except UnicodeDecodeError:
+        print('读取文件时解码错误!')
+
+
+if __name__ == '__main__':
+    main()
+
+
+import time
+
+def main():
+    #一次性读取所有文件内容
+with open('hahah.txt','r')as f:
+    print(f.read())
+
+    #for 循环
+with open('hahha.txt','r') as f:
+    for line in f:
+        print(line,end='')
+        time.sleep(0.5)
+print()
+
+#按行读取到列表中，列表中，列表中
+
+with open('hhhha.txt','r')as f:
+    lines = f.readlines()
+print(lines)
+if __name__ == '__main__':
+    main()
+
+from math import sqrt
+
+
+def is_prime(n):
+    """判断素数的函数"""
+    assert n > 0
+    for factor in range(2, int(sqrt(n)) + 1):
+        if n % factor == 0:
+            return False
+    return True if n != 1 else False
+
+#写入不同的文件
+def main():
+    filenames = ('a.txt', 'b.txt', 'c.txt')
+    fs_list = []
+    try:
+        for filename in filenames:
+            fs_list.append(open(filename, 'w', encoding='utf-8'))
+        for number in range(1, 10000):
+            if is_prime(number):
+                if number < 100:
+                    fs_list[0].write(str(number) + '\n')
+                elif number < 1000:
+                    fs_list[1].write(str(number) + '\n')
+                else:
+                    fs_list[2].write(str(number) + '\n')
+    except IOError as ex:
+        print(ex)
+        print('写文件时发生错误!')
+    finally:
+        for fs in fs_list:
+            fs.close()
+    print('操作完成!')
+
+
+if __name__ == '__main__':
+    main()
+
+#图片（是二进制）读写
+def main():
+    try:
+        with open('dafafd.jpg','r') as f:
+            data = f.read()
+            print(type(data))
+        with open('asdfgad.jpg','w') as t:
+            t.write(data)
+    except FileNotFoundError as e:
+        print('指定的文件无法打开.')
+    except IOError as e:
+        print('读写文件时出现错误.')
+    print('程序执行结束.')
+
+
+if __name__ == '__main__':
+    main()
+
