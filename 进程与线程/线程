@@ -1,0 +1,24 @@
+from threading import Thread
+from os import getpid
+from time import sleep,time
+from random import randint
+
+def Download(filename):
+    print('start download{},downloading...,ProcessID is {}'.format(filename,getpid()))
+    timeToDownload = randint(5,10)
+    sleep(timeToDownload)
+    print('sucessful!,The{} time you cost is{}s'.format(filename,timeToDownload))
+
+def main():
+    start = time()
+    p1 = Thread(target=Download,args=('peking hot.avi',))
+    p1.start()
+    p2 = Thread(target=Download,args=('Three Kingdoms.word',))
+    p2.start()
+    p1.join()
+    p2.join()
+    end = time()
+    print('Take totally {} s'.format(end-start))
+
+if __name__ == '__main__':
+    main()
