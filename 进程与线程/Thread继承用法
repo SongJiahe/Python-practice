@@ -1,0 +1,29 @@
+from random import randint
+from threading import Thread
+from time import time , sleep
+
+class Download(Thread):
+
+    def __init__(self,filename):
+        super().__init__()
+        self._filename = filename
+
+    def run(self):
+        print('start downloading{}...please wait'.format(self._filename))
+        timeToDownload = randint(5,10)
+        sleep(timeToDownload)
+        print('{}Finish,It took {} s.'.format(self._filename,timeToDownload))
+
+def main():
+    start = time()
+    t1 = Download('peking hot.avi')
+    t1.start()
+    t2 = Download('Three Kingdoms.word')
+    t2.start()
+    t1.join()
+    t2.join()
+    end = time()
+    print('It took {} s to download all files.'.format(end-start))
+
+if __name__ == '__main__':
+    main()
