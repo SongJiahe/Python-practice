@@ -34,7 +34,7 @@ def merge_sort(items, comp=lambda x, y: x <= y):
         return items[:]
     mid = len(items) // 2
     left = merge_sort(items[:mid], comp)
-    right = merge_sort(items[mid:], comp)
+    right = merge_sort(items[mid:], comp)   
     return merge(left, right, comp)
 
 
