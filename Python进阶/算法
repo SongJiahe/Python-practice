@@ -27,7 +27,7 @@ def bubble_sort(origin_items, comp=lambda x, y: x > y):
                     swapped = True
         if not swapped:
             break
-    return items
+    return items  
 def merge_sort(items, comp=lambda x, y: x <= y):
     """归并排序(分治法)"""
     if len(items) < 2:
