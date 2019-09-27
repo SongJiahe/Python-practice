@@ -3,7 +3,7 @@ Pillow中最为重要的是Image类，读取和处理图像都要通过这个类
 >>> from PIL import Image
 >>>
 >>> image = Image.open('./res/guido.jpg')
->>> image.format, image.size, image.mode
+>>> image.format, image.size, image.mode   
 ('JPEG', (500, 750), 'RGB')
 >>> image.show()
 
