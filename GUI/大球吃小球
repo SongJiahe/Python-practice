@@ -40,7 +40,7 @@ class Ball(object):
 
     def move(self, screen):
         """移动"""
-        self.x += self.sx
+        self.x += self.sx 
         self.y += self.sy
         if self.x - self.radius <= 0 or \
                 self.x + self.radius >= screen.get_width():
@@ -110,3 +110,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+  
