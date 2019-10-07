@@ -23,11 +23,11 @@ class Color(Enum):
         g = randint(0, 255)
         b = randint(0, 255)
         return (r, g, b)
-
+  
 
 class Ball(object):
     """球"""
-     
+      
     def __init__(self, x, y, radius, sx, sy, color=Color.RED):
         """初始化方法"""
         self.x = x
