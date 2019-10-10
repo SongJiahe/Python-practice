@@ -25,7 +25,7 @@ class Color(Enum):
         return (r, g, b)
   
 
-class Ball(object):
+class Ball(object): 
     """球"""
       
     def __init__(self, x, y, radius, sx, sy, color=Color.RED):
