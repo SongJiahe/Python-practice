@@ -36,7 +36,7 @@ class Ball(object):
         self.sx = sx
         self.sy = sy
         self.color = color
-        self.alive = True
+        self.alive = True  
 
     def move(self, screen):
         """移动"""
