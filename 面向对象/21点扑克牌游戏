@@ -25,7 +25,7 @@ class Card():   #构造一张牌的规则
 
     @property
     def face(self):
-        return self._face
+        return self._face 
 
     def __str__(self):
         if self._face == 1:   #先给A赋值11，如果爆牌再切换为1
@@ -79,7 +79,7 @@ class Player(object):   #庄闲
         self._cards_on_hand.append(card)   #把切片得到的牌放入玩家手牌，不用pop是为了清晰直观
 
 
-"""未完待续"""
+"""未完待续"""    
 
 
 。。。
