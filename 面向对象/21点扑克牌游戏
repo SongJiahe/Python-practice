@@ -23,7 +23,7 @@ class Card():   #构造一张牌的规则
     def suite(self):
         return self._suite
 
-    @property
+    @property  
     def face(self):
         return self._face 
 
