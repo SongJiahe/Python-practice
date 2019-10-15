@@ -34,7 +34,7 @@ class Card():   #构造一张牌的规则
             face_str = 10
         else:
             face_str = str(self._face)
-        return face_str
+        return face_str   
     def __repr__(self):
         return self.__str__()
 
