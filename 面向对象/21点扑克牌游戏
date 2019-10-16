@@ -23,11 +23,11 @@ class Card():   #构造一张牌的规则
     def suite(self):
         return self._suite
 
-    @property  
+    @property   
     def face(self):
         return self._face 
 
-    def __str__(self):
+    def __str__(self): 
         if self._face == 1:   #先给A赋值11，如果爆牌再切换为1
             face_str = 11
         elif self._face == 11 or 12 or 13 :   #J\Q\K都为10
