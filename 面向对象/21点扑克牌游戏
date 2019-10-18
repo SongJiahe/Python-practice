@@ -17,7 +17,7 @@ class Card():   #构造一张牌的规则
 
     def __init__(self,suite,face):
         self._suite = suite
-        self._face = face
+        self._face = face   
 
     @property
     def suite(self):
