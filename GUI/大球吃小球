@@ -32,7 +32,7 @@ class Ball(object):
         """初始化方法"""
         self.x = x
         self.y = y
-        self.radius = radius
+        self.radius = radius   
         self.sx = sx
         self.sy = sy
         self.color = color
