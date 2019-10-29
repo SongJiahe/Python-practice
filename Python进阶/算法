@@ -14,7 +14,7 @@ Python语言进阶
  - 平方时间复杂度 - 简单排序算法（选择排序、插入排序、冒泡排序）
  - 立方时间复杂度 - Floyd算法 / 矩阵乘法运算
  - 几何级数时间复杂度 - 汉诺塔
- - 阶乘时间复杂度 - 旅行经销商问题 - NP
+ - 阶乘时间复杂度 - 旅行经销商问题 - NP   
 
 
 
@@ -79,11 +79,11 @@ def seq_search(items, key):
         if item == key:
             return index
     return -1
-def bin_search(items, key):
+def bin_search(items, key):    
     """折半查找""" 
     start, end = 0, len(items) - 1
     while start <= end:
-        mid = (start + end) // 2
+        mid = (start + end) //  2
         if key > items[mid]:
             start = mid + 1
         elif key < items[mid]:
