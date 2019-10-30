@@ -36,7 +36,7 @@ def bubble_sort(origin_items, comp=lambda x, y: x > y):
     items = origin_items[:]
     for i in range(len(items) - 1):      
         swapped = False   
-        for j in range(i, len(items) - 1 - i):
+        for j in range(i, len(items) - 1 - i):       
             if comp(items[j], items[j + 1]):
                 items[j], items[j + 1] = items[j + 1], items[j]
                 swapped = True
