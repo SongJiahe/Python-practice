@@ -105,9 +105,10 @@ def main():
             ball.move(screen)
             # 检查球有没有吃到其他的球
             for other in balls:
-                ball.eat(other)
+                ball.eat(other)  
 
 
 if __name__ == '__main__':
     main()
       
+     
