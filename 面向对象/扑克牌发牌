@@ -34,7 +34,7 @@ class Card(object):
 
 
 class Poker(object):
-    """一副牌"""
+    """一副牌"""    
       
     def __init__(self):
         self._cards = [Card(suite, face)
