@@ -5,7 +5,7 @@ class Card(object):
     """一张牌"""
 
     def __init__(self, suite, face):
-        self._suite = suite
+        self._suite = suite    
         self._face = face
 
     @property
