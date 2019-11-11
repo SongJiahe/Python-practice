@@ -18,7 +18,7 @@ def main():
     if not m2:
         print('请输入有效的QQ号.')
     if m1 and m2:
-        print('你输入的信息是有效的!')
+        print('你输入的信息是有效的!')     
 
 
 if __name__ == '__main__':    
