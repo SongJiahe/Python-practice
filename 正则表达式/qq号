@@ -6,7 +6,7 @@
 import re
 
 
-def main():
+def main():     
     username = input('请输入用户名: ')
     qq = input('请输入QQ号: ')
     # match函数的第一个参数是正则表达式字符串或正则表达式对象
