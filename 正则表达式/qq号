@@ -13,7 +13,7 @@ def main():
     # 第二个参数是要跟正则表达式做匹配的字符串对象
     m1 = re.match(r'^[0-9a-zA-Z_]{6,20}$', username)
     if not m1:
-        print('请输入有效的用户名.')
+        print('请输入有效的用户名.')      
     m2 = re.match(r'^[1-9]\d{4,11}$', qq)
     if not m2:
         print('请输入有效的QQ号.')
